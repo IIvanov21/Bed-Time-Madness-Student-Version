@@ -28,7 +28,7 @@ public class FirstPersonCamera : MonoBehaviour
 
         //Up and Down Rotation being applied only to the camera object
         xRotation -= mouseY;
-        Mathf.Clamp(xRotation, -60.0f, 60.0f);
+        xRotation = Mathf.Clamp(xRotation, -60.0f, 60.0f);
         mainCamera.transform.localRotation = Quaternion.Euler(xRotation, 0.0f, 0.0f);
 
         //Left and Right rotation being applied straight to the parent object

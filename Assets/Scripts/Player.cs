@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     public float speed;
 
+    //Bullet properties
+    [SerializeField]private GameObject shootingPoint;
+    [SerializeField]private GameObject bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +19,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+
+        /*Input.GetKey(KeyCode.);//Checking if the button/key is being pressed and held down
+        Input.GetKeyUp();//Checks if the button/key is being released after being pressed down
+        Input.GetKeyDown();//Checks if the button/key is being pressed down
+
+        Input.GetButton();
+        Input.GetButtonUp();
+        Input.GetButtonDown();*/
+
+        //if (Input.GetButtonDown("Fire1"))
+        if(Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Attack();
+        }
     }
 
     void Move()
@@ -50,5 +67,8 @@ public class Player : MonoBehaviour
 
     }
 
-
+    void Attack()
+    {
+        Instantiate(bullet, shootingPoint.transform.position,shootingPoint.transform.rotation);
+    }
 }
