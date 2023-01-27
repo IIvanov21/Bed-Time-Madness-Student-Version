@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IActorTemplate
 {
-    public float speed;
+    float speed;
+    int health;
+    int hitPower;
+    GameObject actor;
+    GameObject bullet;
 
     //Bullet properties
     [SerializeField]private GameObject shootingPoint;
-    [SerializeField]private GameObject bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,5 +72,30 @@ public class Player : MonoBehaviour
     void Attack()
     {
         Instantiate(bullet, shootingPoint.transform.position,shootingPoint.transform.rotation);
+    }
+
+    public void ActorStats(SOActorModel actorModel)
+    {
+        speed = actorModel.speed;
+        health = actorModel.health;
+        hitPower = actorModel.hitPower;
+
+        actor = actorModel.actor;
+        bullet = actorModel.actorBullet;
+    }
+
+    public int SendDamage()
+    {
+        return hitPower;
+    }
+
+    public void TakeDamage(int incomingDamage)
+    {
+        health -= incomingDamage;
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
