@@ -8,11 +8,13 @@ public class Bullet : MonoBehaviour, IActorTemplate
     int health;
     int hitPower;
     GameObject actor;
+    string colourName;
 
     [SerializeField] SOActorModel actorModel;
     void Awake()
     {
         ActorStats(actorModel);
+        ChangeColour();
     }
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class Bullet : MonoBehaviour, IActorTemplate
         health=actorModel.health;
         hitPower=actorModel.hitPower;
         actor=actorModel.actor;
+        colourName=actorModel.colourName;
     }
 
     public int SendDamage()
@@ -52,5 +55,13 @@ public class Bullet : MonoBehaviour, IActorTemplate
     public void Die()
     {
         Destroy(gameObject);
+    }
+
+    void ChangeColour()
+    {
+        if (colourName == "red")
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+        }
     }
 }
