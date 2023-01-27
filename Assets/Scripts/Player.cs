@@ -28,8 +28,7 @@ public class Player : MonoBehaviour
         Input.GetButtonUp();
         Input.GetButtonDown();*/
 
-        //if (Input.GetButtonDown("Fire1"))
-        if(Input.GetKeyDown(KeyCode.Mouse1))
+        if(Input.GetButtonDown("Fire1"))
         {
             Attack();
         }
