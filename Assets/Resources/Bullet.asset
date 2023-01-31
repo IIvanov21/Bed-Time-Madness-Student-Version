@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Bullet
   m_EditorClassIdentifier: 
   description: 
-  actorName: 
-  actorType: 0
-  health: 0
-  speed: 0
-  hitPower: 0
+  actorName: Bullet
+  actorType: 4
+  health: 1
+  speed: 1
+  hitPower: 1
   score: 0
-  actor: {fileID: 0}
+  colourName: red
+  actor: {fileID: 873680500178839767, guid: 5293dbd34d7aac546b9b745b0f2033fe, type: 3}
   actorBullet: {fileID: 0}

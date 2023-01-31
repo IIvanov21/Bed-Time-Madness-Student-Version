@@ -16,8 +16,9 @@ MonoBehaviour:
   actorName: Potato
   actorType: 0
   health: 100
-  speed: 1000000
+  speed: 10
   hitPower: 1
   score: 0
+  colourName: 
   actor: {fileID: 57192593112680783, guid: 306a87b4c787d124c848fd65d5b047c5, type: 3}
   actorBullet: {fileID: 873680500178839767, guid: 5293dbd34d7aac546b9b745b0f2033fe, type: 3}
