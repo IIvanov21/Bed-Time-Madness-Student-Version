@@ -19,7 +19,8 @@ public class ScenesManager : MonoBehaviour
     public void BeginGame()
     {
         SceneManager.LoadScene("SampleScene");
-        
+        GameManager.Instance.gameState = GameManager.GameStates.Play;
+        Time.timeScale = 1;
     }
 
     public void GameOver()

@@ -23,16 +23,18 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Capturing the movement input
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        if (GameManager.Instance.gameState == GameManager.GameStates.Play)
+        {
+            //Capturing the movement input
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
 
-        //Applying the movement input to our animations
-        UpdateAnimations(horizontal, vertical);
+            //Applying the movement input to our animations
+            UpdateAnimations(horizontal, vertical);
 
-        if (Input.GetButtonDown("Fire1"))Shoot();
-        else if(Input.GetButtonUp("Fire1")) Shoot();
-        
+            if (Input.GetButtonDown("Fire1")) Shoot();
+            else if (Input.GetButtonUp("Fire1")) Shoot();
+        }
     }
 
     public void UpdateAnimations(float h, float v)

@@ -6,6 +6,17 @@ public class GameManager : MonoBehaviour
 {
     static GameManager instance;
 
+   
+    //GameStates functionality
+    public enum GameStates
+    {
+        None,
+        Play,
+        Pause,
+    }
+    public GameStates gameState=GameStates.Play;
+
+
     public static GameManager Instance
     {
         get { return instance; }//Access to the GameManager publicly
@@ -15,6 +26,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CheckGameManager();
+    }
+
+    private void Update()
+    {
+        
     }
 
     void CheckGameManager()
@@ -30,4 +46,6 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+ 
 }
