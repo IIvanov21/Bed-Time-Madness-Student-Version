@@ -64,4 +64,13 @@ public class Bullet : MonoBehaviour, IActorTemplate
             GetComponent<Renderer>().material.color = Color.red;
         }
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Enemy"))
+        {
+            Destroy(collider.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
