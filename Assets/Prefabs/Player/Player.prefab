@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2017136719996838158}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6139a1fd9b36d134b9f05b987cbf52b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 10
+  drawDistance: 0.8
+  isJump: 1
   shootingPoint: {fileID: 1752155202345878126}
 --- !u!114 &3282549677709602242
 MonoBehaviour:

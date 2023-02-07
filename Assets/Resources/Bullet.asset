@@ -16,7 +16,7 @@ MonoBehaviour:
   actorName: Bullet
   actorType: 4
   health: 1
-  speed: 10
+  speed: 15
   hitPower: 1
   score: 0
   colourName: red

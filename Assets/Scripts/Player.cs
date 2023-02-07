@@ -9,13 +9,18 @@ public class Player : MonoBehaviour, IActorTemplate
     int hitPower;
     GameObject actor;
     GameObject bullet;
-
+    
+    Rigidbody rb;
+    //Jump values
+    [SerializeField]float jumpForce = 1000.0f;
+    [SerializeField]float drawDistance = 2.0f;
+    [SerializeField] bool isJump=true;
     //Bullet properties
     [SerializeField]private GameObject shootingPoint;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -37,7 +42,32 @@ public class Player : MonoBehaviour, IActorTemplate
             {
                 Attack();
             }
+
+            if (Input.GetKeyDown(KeyCode.Space) && isJump)
+            {
+                Jump();
+            }
+
+
         }
+    }
+
+    void FixedUpdate()
+    {
+        //Vector3 fwd = transform.TransformDirection(Vector3.forward);//Direction of the ray
+        Vector3 down = transform.TransformDirection(Vector3.down);//Direction of the ray
+        Debug.DrawRay(transform.position, down * drawDistance, Color.red);//Only a visual gizmo to see what the ray is hitting
+        RaycastHit hit;//To store information for the object that is being currently hit by our ray
+
+        LayerMask layerMask = LayerMask.GetMask("Environment");
+        //int layerMask = 0<<7;
+        if (Physics.Raycast(transform.position, down,out hit, drawDistance,layerMask))
+        {
+            Debug.Log("We have hit: " + hit.collider.name);
+            Debug.DrawRay(transform.position, down * hit.distance, Color.green);
+            isJump = true;
+        }
+
     }
 
     void Move()
@@ -100,5 +130,12 @@ public class Player : MonoBehaviour, IActorTemplate
     public void Die()
     {
         Destroy(gameObject);
+    }
+
+    void Jump()
+    {
+        Vector3 force=Vector3.up*jumpForce;
+        rb.AddForce(force, ForceMode.Impulse);
+        isJump = false;
     }
 }

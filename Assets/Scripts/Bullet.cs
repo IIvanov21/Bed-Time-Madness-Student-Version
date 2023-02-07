@@ -73,4 +73,14 @@ public class Bullet : MonoBehaviour, IActorTemplate
             Destroy(gameObject);
         }
     }
+
+    void OnTriggerStay(Collider collider)
+    {
+        
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        
+    }
 }
