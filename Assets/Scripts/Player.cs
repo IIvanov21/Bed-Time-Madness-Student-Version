@@ -111,6 +111,7 @@ public class Player : MonoBehaviour, IActorTemplate
     {
         speed = actorModel.speed;
         health = actorModel.health;
+        GameManager.playerHealth = actorModel.health;
         hitPower = actorModel.hitPower;
 
         actor = actorModel.actor;

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     static GameManager instance;
 
+    //Player values
+    public static int playerHealth;
    
     //GameStates functionality
     public enum GameStates
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
         Pause,
     }
     public GameStates gameState=GameStates.Play;
+
 
 
     public static GameManager Instance

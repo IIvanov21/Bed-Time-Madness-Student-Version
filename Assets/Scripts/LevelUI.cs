@@ -9,10 +9,16 @@ public class LevelUI : MonoBehaviour
 
     [SerializeField] GameObject pausePanel;
 
+    //Custom delegates 
+    public delegate void OnScoreUpdate();
+    public static OnScoreUpdate onScoreUpdate;
+    public delegate void OnLifeUpdate();
+    public static OnLifeUpdate onLifeUpdate;
 
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
+        onScoreUpdate = ScoreSystem;
         
     }
 
@@ -23,6 +29,8 @@ public class LevelUI : MonoBehaviour
         {
             PauseGame();
         }
+
+        
     }
 
     public void PauseGame()
@@ -45,5 +53,15 @@ public class LevelUI : MonoBehaviour
             Time.timeScale = 1;
             GameManager.Instance.gameState = GameManager.GameStates.Play;
         }
+    }
+
+    public void LifeSystemTracker()
+    {
+        //Task to update the health bar on the screen
+    }
+
+    public void ScoreSystem()
+    {
+        //Task is to update the score on the screen
     }
 }

@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: bee30c473207f044bac2c109222e6cdd
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/waveOne.unity
+    guid: 2b62f7b153e232d4899296858497b41c
+  - enabled: 1
+    path: Assets/Scenes/waveTwo.unity
+    guid: 9adc162cfca99f54c951e889a7556e39
+  - enabled: 1
+    path: Assets/Scenes/waveThree.unity
+    guid: d1cfa30de868e954aa101f562a5335d5
+  - enabled: 1
+    path: Assets/Scenes/waveBoss.unity
+    guid: 00854d0e5256ccb4fac94a31586e99c2
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: d9198b1f1c6590a488ff3eda8aa250e9
   m_configObjects: {}
