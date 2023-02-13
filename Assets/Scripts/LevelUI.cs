@@ -6,7 +6,7 @@ public class LevelUI : MonoBehaviour
 {
     //UI Elements
     bool isPaused = false;
-
+    bool isOptions = false;
     [SerializeField] GameObject pausePanel;
 
     //Custom delegates 
@@ -25,7 +25,7 @@ public class LevelUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isOptions)
         {
             PauseGame();
         }
@@ -53,6 +53,11 @@ public class LevelUI : MonoBehaviour
             Time.timeScale = 1;
             GameManager.Instance.gameState = GameManager.GameStates.Play;
         }
+    }
+
+    public void SetOptions(bool value)
+    {
+        isOptions = value;
     }
 
     public void LifeSystemTracker()
