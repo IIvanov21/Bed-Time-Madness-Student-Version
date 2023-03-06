@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     //Player values
     public static int playerHealth;
-   
+    public static Vector3 playerPosition = Vector3.zero;
     //GameStates functionality
     public enum GameStates
     {

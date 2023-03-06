@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class LevelUI : MonoBehaviour
 {
@@ -8,6 +10,12 @@ public class LevelUI : MonoBehaviour
     bool isPaused = false;
 
     [SerializeField] GameObject pausePanel;
+
+    //Life slider
+    [SerializeField] Slider lifeSlider;
+
+    //Score text component
+    [SerializeField] TMP_Text score;
 
     //Custom delegates 
     public delegate void OnScoreUpdate();
@@ -19,7 +27,7 @@ public class LevelUI : MonoBehaviour
     void Awake()
     {
         onScoreUpdate = ScoreSystem;
-        
+        onLifeUpdate = LifeSystemTracker;
     }
 
     // Update is called once per frame
@@ -58,10 +66,12 @@ public class LevelUI : MonoBehaviour
     public void LifeSystemTracker()
     {
         //Task to update the health bar on the screen
+        if(GameManager.playerHealth>0)lifeSlider.value = GameManager.playerHealth;
     }
 
     public void ScoreSystem()
     {
         //Task is to update the score on the screen
+        score.text = "Score: " + GameManager.Instance.GetComponent<ScoreManager>().PlayerScore;
     }
 }

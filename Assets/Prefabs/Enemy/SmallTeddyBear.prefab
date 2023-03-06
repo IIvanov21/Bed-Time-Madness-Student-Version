@@ -97,9 +97,10 @@ GameObject:
   - component: {fileID: 8509162601755888079}
   - component: {fileID: 8737277257668361082}
   - component: {fileID: 7894034628404997236}
-  - component: {fileID: 9163311584521122942}
+  - component: {fileID: 2569300750770738559}
+  - component: {fileID: 4010420380580664243}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: SmallTeddyBear
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +201,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &9163311584521122942
+--- !u!195 &2569300750770738559
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8867553926995479637}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &4010420380580664243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,7 +232,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8867553926995479637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 054488694cd725c48a41195f560b826c, type: 3}
+  m_Script: {fileID: 11500000, guid: cd718ea8f9cbe8b4babf118df97d3173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actorModel: {fileID: 11400000, guid: 66fe87f6376874f478257871eec2a317, type: 2}
+  agent: {fileID: 2569300750770738559}
+  minDistanceToPlayer: 2
