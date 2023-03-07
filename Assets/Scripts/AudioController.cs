@@ -34,6 +34,10 @@ public class AudioController : MonoBehaviour
         audioMixer.SetFloat("MasterVolume", master.value);//Connects the slider value to the audio mixer
         float percentage = (((-80.0f - master.value)) / -80.0f) * 100.0f;//Convert dB to percentage
         masterText.text = ((int)percentage).ToString();//Display percentage value
+
+        //Save Audio settings
+        PlayerPrefs.SetFloat("masterVolume", master.value);
+        PlayerPrefs.Save();
     }
 
     public void SetMusicSound()
@@ -41,6 +45,9 @@ public class AudioController : MonoBehaviour
         audioMixer.SetFloat("MusicVolume", music.value);
         float percentage = (((-80.0f - music.value)) / -80.0f) * 100.0f;
         musicText.text = ((int)percentage).ToString();
+
+        PlayerPrefs.SetFloat("musicVolume", music.value);
+        PlayerPrefs.Save();
     }
 
     public void SetAmbientSound()
@@ -48,6 +55,9 @@ public class AudioController : MonoBehaviour
         audioMixer.SetFloat("AmbientVolume", ambient.value);
         float percentage = (((-80.0f - ambient.value)) / -80.0f) * 100.0f;
         ambientText.text = ((int)percentage).ToString();
+
+        PlayerPrefs.SetFloat("ambientVolume", ambient.value);
+        PlayerPrefs.Save();
     }
 
     public void SetPlayerSound()
@@ -55,6 +65,9 @@ public class AudioController : MonoBehaviour
         audioMixer.SetFloat("PlayerVolume", player.value);
         float percentage = (((-80.0f - player.value)) / -80.0f) * 100.0f;
         playerText.text = ((int)percentage).ToString();
+
+        PlayerPrefs.SetFloat("playerVolume", player.value);
+        PlayerPrefs.Save();
     }
 
     void SetStartingValues()
@@ -62,26 +75,30 @@ public class AudioController : MonoBehaviour
         float percentage, value;
 
         //Master Volume
-        audioMixer.GetFloat("MasterVolume", out value);//Extracting the actual volume value
+        value = PlayerPrefs.GetFloat("masterVolume");
+        audioMixer.SetFloat("MasterVolume",value);//Extracting the actual volume value
         master.value = value;//Apply it to the slider
         percentage = ((-80.0f - value) / -80.0f) * 100.0f;//Convert it to a percentage
         masterText.text = ((int)percentage).ToString();//Display the percentage
 
         //Music Volume
-        audioMixer.GetFloat("MusicVolume", out value);//Extracting the actual volume value
+        value = PlayerPrefs.GetFloat("musicVolume");
+        audioMixer.SetFloat("MusicVolume", value);//Extracting the actual volume value
         music.value = value;//Apply it to the slider
         percentage = ((-80.0f - value) / -80.0f) * 100.0f;//Convert it to a percentage
         musicText.text = ((int)percentage).ToString();//Display the percentage
 
         //Ambient Volume
-        audioMixer.GetFloat("AmbientVolume", out value);//Extracting the actual volume value
+        value = PlayerPrefs.GetFloat("ambientVolume");
+        audioMixer.SetFloat("AmbientVolume", value);//Extracting the actual volume value
         ambient.value = value;//Apply it to the slider
         percentage = ((-80.0f - value) / -80.0f) * 100.0f;//Convert it to a percentage
         ambientText.text = ((int)percentage).ToString();//Display the percentage
 
 
         //Player Volume
-        audioMixer.GetFloat("PlayerVolume", out value);//Extracting the actual volume value
+        value = PlayerPrefs.GetFloat("playerVolume");
+        audioMixer.SetFloat("PlayerVolume", value);//Extracting the actual volume value
         player.value = value;//Apply it to the slider
         percentage = ((-80.0f - value) / -80.0f) * 100.0f;//Convert it to a percentage
         playerText.text = ((int)percentage).ToString();//Display the percentage
