@@ -48,7 +48,7 @@ public class Player : MonoBehaviour, IActorTemplate
                 Jump();
             }
 
-
+            GameManager.playerPosition=transform.position;
         }
     }
 
@@ -131,6 +131,7 @@ public class Player : MonoBehaviour, IActorTemplate
     public void Die()
     {
         Destroy(gameObject);
+        GameManager.Instance.GetComponent<ScenesManager>().GameOver();
     }
 
     void Jump()
@@ -138,5 +139,25 @@ public class Player : MonoBehaviour, IActorTemplate
         Vector3 force=Vector3.up*jumpForce;
         rb.AddForce(force, ForceMode.Impulse);
         isJump = false;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        //Check if an Enemy or an Enemy projectile had collided with the player
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            //If our health is above a 0 take away the enemy damage from it.
+            if (health > 0)
+            {
+                health -= collision.gameObject.GetComponent<IActorTemplate>().SendDamage();
+                Debug.Log("The player's health is " + health);
+                GameManager.playerHealth = health;//Update global tracker for the player health
+                LevelUI.onLifeUpdate?.Invoke();//Delegate to update our Level UI elements
+            }
+            //Checks if the player is dead.
+            if (health <= 0) Die();
+
+            
+        }
     }
 }

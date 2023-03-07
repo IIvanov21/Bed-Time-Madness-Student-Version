@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour, IActorTemplate
     int hitPower;
     GameObject actor;
     string colourName;
+    [SerializeField]string targetTag;
+    [SerializeField]string targetProjectileTag;
 
     [SerializeField] SOActorModel actorModel;
     void Awake()
@@ -65,14 +67,24 @@ public class Bullet : MonoBehaviour, IActorTemplate
         }
     }
 
-    void OnTriggerEnter(Collider collider)
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag(targetTag) || collision.gameObject.CompareTag(targetProjectileTag))
+        {
+            if (health >= 1) health -= collision.gameObject.GetComponent<IActorTemplate>().SendDamage();
+            if (health <= 0) Die();
+        }
+    }
+
+    /*void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Enemy"))
         {
             Destroy(collider.gameObject);
             Destroy(gameObject);
         }
-    }
+    }*/
 
     void OnTriggerStay(Collider collider)
     {

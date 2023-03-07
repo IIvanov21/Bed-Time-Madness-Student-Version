@@ -513,6 +513,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 656995156111793373}
+  lifeSlider: {fileID: 676379771167331382}
+  score: {fileID: 676379769759025456}
 --- !u!1 &676379770296703610
 GameObject:
   m_ObjectHideFlags: 0
