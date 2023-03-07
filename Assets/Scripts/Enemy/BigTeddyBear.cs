@@ -8,7 +8,7 @@ public class BigTeddyBear : Enemy
     //Patrol variables
     float distanceToPatrolPoint = 0.0f;
     Vector3 startingPos = Vector3.zero;
-    bool patrol = true;
+    bool isSeeking = false;
     bool patrolSwitch = true;
 
     //Patrol access points
@@ -22,7 +22,7 @@ public class BigTeddyBear : Enemy
         startingPos = transform.position;
 
         //Capture all the patrol points in game
-        patrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoints");
+        patrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoint");
 
         //Get a reference to patrol point B
         patrolPoint = patrolPoints[Random.Range(0, patrolPoints.Length )];// TODO: Get rid of the minus 1
@@ -31,7 +31,14 @@ public class BigTeddyBear : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameManager.Instance.gameState== GameManager.GameStates.Play)
+        {
+            isSeeking = LookingAtPlayer();
+
+            if (isSeeking) Chase();
+            else Patrol();
+
+        }
     }
 
     public void Patrol()

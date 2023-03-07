@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 2547961453791278268}
   - component: {fileID: 2136705801527097236}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: Bullet
+  m_Name: EnemyBullet
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,6 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d46ab755f6473049bfbdd64c23e2f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Enemy
-  targetProjectileTag: EnemyBullet
-  actorModel: {fileID: 11400000, guid: d90aff37c3403594ca18b773db50af5a, type: 2}
+  targetTag: Player
+  targetProjectileTag: Bullet
+  actorModel: {fileID: 11400000, guid: 65a021a4f220e8a41a6f4a52fa36c897, type: 2}

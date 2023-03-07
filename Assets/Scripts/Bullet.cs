@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour, IActorTemplate
     int hitPower;
     GameObject actor;
     string colourName;
+    [SerializeField]string targetTag;
+    [SerializeField]string targetProjectileTag;
 
     [SerializeField] SOActorModel actorModel;
     void Awake()
@@ -68,7 +70,7 @@ public class Bullet : MonoBehaviour, IActorTemplate
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
+        if(collision.gameObject.CompareTag(targetTag) || collision.gameObject.CompareTag(targetProjectileTag))
         {
             if (health >= 1) health -= collision.gameObject.GetComponent<IActorTemplate>().SendDamage();
             if (health <= 0) Die();

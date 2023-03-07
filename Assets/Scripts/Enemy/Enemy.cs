@@ -52,8 +52,10 @@ public class Enemy : MonoBehaviour, IActorTemplate
 
     public void Die()
     {
+        GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);//<====== Modify after implementing the Score Manager methods
+        LevelUI.onScoreUpdate?.Invoke();
 
-        if(actorType==SOActorModel.ActorType.BossTeddyBear)
+        if (actorType==SOActorModel.ActorType.BossTeddyBear)
         {
             GameManager.Instance.GetComponent<ScenesManager>().GameOver();
             //If you wanted a custom sequence this is where you write the code for it.
@@ -78,9 +80,7 @@ public class Enemy : MonoBehaviour, IActorTemplate
         {
             if (health >= 1) health -= collision.gameObject.GetComponent<IActorTemplate>().SendDamage();
             if (health <= 0) Die();
-
-            GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);//<====== Modify after implementing the Score Manager methods
-            LevelUI.onScoreUpdate?.Invoke();
+           
 
         }
     }
@@ -90,12 +90,13 @@ public class Enemy : MonoBehaviour, IActorTemplate
         //Calculating if we are facing the player
         directionToPlayer = transform.position - GameManager.playerPosition;
         angle = Vector3.Angle(transform.forward, directionToPlayer);
-
         //Calculating the distance to the player
         distanceToPlayer=Vector3.Distance(transform.position, GameManager.playerPosition);
 
         if (distanceToPlayer <= minDistanceToPlayer && FacingPlayer())
         {
+            Debug.Log("I can see the player!");
+
             return true;
         }
         else return false;
