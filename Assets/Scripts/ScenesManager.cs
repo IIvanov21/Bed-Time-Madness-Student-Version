@@ -33,6 +33,7 @@ public class ScenesManager : MonoBehaviour
 
     public void MainScene()
     {
+        GameManager.Instance.GetComponent<ScoreManager>().ResetScore();
         SceneManager.LoadScene("Title");
     }
 
