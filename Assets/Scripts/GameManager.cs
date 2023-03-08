@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     //Player values
     public static int playerHealth;
     public static Vector3 playerPosition = Vector3.zero;
+   
+    public static bool isGameInitialised = false;
+
     //GameStates functionality
     public enum GameStates
     {

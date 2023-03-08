@@ -6,6 +6,13 @@ public class Player : MonoBehaviour, IActorTemplate
 {
     float speed;
     int health;
+
+    public int Health
+    { 
+        get { return health; }
+        set { health = value; }
+    }
+
     int hitPower;
     GameObject actor;
     GameObject bullet;
@@ -21,6 +28,7 @@ public class Player : MonoBehaviour, IActorTemplate
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        GameManager.isGameInitialised = true;
     }
 
     // Update is called once per frame
